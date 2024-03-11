@@ -1,6 +1,5 @@
 /* ####### STRUCTURE DU JEU ####### */
-const listeMots = ["cachalot", "pétunia", "serviette"];
-const listePhrases = ["pas de panique !", "la vie, l'univers et le reste", "merci pour le poisson"];
+
 let score = 0;
 let enterWord = 0;
 // let enterWord = prompt("Entrez le mot : " + listeMots[0]);
@@ -71,3 +70,10 @@ if (choice === "phrases") {
     console.log("Votre score final est de : " + score + " sur " + listePhrases.length + " possibilités. Bravo !"); 
 }
 
+function retournerMessageScore(score, nombreQuestions) {
+    let message = 'Votre score est de ' + score + ' sur ' + nombreQuestions
+    return message
+}
+
+let nouveauMessage = retournerMessageScore(5, 10)
+console.log(nouveauMessage)
