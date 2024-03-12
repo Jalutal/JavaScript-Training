@@ -1,79 +1,39 @@
-/* ####### STRUCTURE DU JEU ####### */
 
-let score = 0;
-let enterWord = 0;
-// let enterWord = prompt("Entrez le mot : " + listeMots[0]);
+let score = 0
 
-// if (enterWord === listeMots[0]) {
-//     console.log("Le mot est correct")
-//     score += 1;
-//     console.log("Votre score est maintenant de : " + score);
-// } else {
-//     console.log("Le mot est incorrect")
-// }
+// Déclaration de la variable contenant le choix de l'utilisateur
+let choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
 
 
-// enterWord = prompt("Entrez le mot : " + listeMots[1]);
-// if (enterWord === listeMots[1]) {
-//     console.log("Le mot est correct")
-//     score += 1;
-//     console.log("Votre score est maintenant de : " + score);
-// } else {
-//     console.log("Le mot est incorrect")
-//     console.log("Votre score est toujours de : " + score)
-// }
-
-// enterWord = prompt("Entrez le mot : " + listeMots[2]);
-// if (enterWord === listeMots[2]) {
-//     console.log("Le mot est correct")
-//     score += 1;
-//     console.log("Votre score est maintenant de : " + score);
-// } else {
-//     console.log("Le mot est incorrect")
-//     console.log("Votre score est toujours de : " + score)
-// }
-
-let choice = 0;
-choice = prompt("Choisissez vous la liste de mots ou la liste de phrases ? Ecrivez mots ou phrases");
-let i = 0;
-while (choice !== "mots" && choice !== "phrases") {
-    console.log("Choisissez mots ou phrases");
-    i++;
-}
-if (choice === "mots") {
-    for (i = 0; i < listeMots.length; i ++) {
-        enterWord = prompt("Ecrivez le mot : " + listeMots[i]);
-        if (enterWord === listeMots[i]) {
-            console.log("Parfait !");
-            score += 1;
-            console.log("Votre score est maintenant de : " + score);
-        } else {
-            console.log("Ca va pas...");
-            console.log("Votre score est toujours de : " + score)
+if (choix === "mots") {
+    // On parcourt le tableau des mots
+    for (let i = 0; i < listeMots.length; i++) {
+        // On demande à l'utilisateur de saisir le mot correspondant à l'indice i
+        let motUtilisateur = prompt("Entrez le mot : " + listeMots[i])
+        if (motUtilisateur === listeMots[i]) {
+            // Si le mot saisi par l'utilisateur est correct, on incrémente le score
+            score++
         }
     }
-    console.log("Votre score final est de : " + score + " sur " + listeMots.length + " possibilités. Bravo !");
-}
-
-if (choice === "phrases") {
-    for (i = 0; i < listePhrases.length; i ++) {
-        enterWord = prompt("Ecrivez la phrase : " + listePhrases[i]);
-        if (enterWord === listePhrases[i]) {
-            console.log("Parfait !");
-            score += 1;
-            console.log("Votre score est maintenant de : " + score);
-        } else {
-            console.log("Ca va pas...");
-            console.log("Votre score est toujours de : " + score)
+    console.log("Votre score est de " + score + " sur " + listeMots.length)
+} else {
+    // On parcourt le tableau des phrases
+    for (let i = 0; i < listePhrases.length; i++) {
+        // On demande à l'utilisateur de saisir la phrase correspondant à l'indice i
+        let phraseUtilisateur = prompt("Entrez la phrase : " + listePhrases[i])
+        if (phraseUtilisateur === listePhrases[i]) {
+            // Si la phrase saisi par l'utilisateur est correct, on incrémente le score
+            score++
         }
-    }   
-    console.log("Votre score final est de : " + score + " sur " + listePhrases.length + " possibilités. Bravo !"); 
+    }
+}
+function afficherResultat(score, nbMotsProposes ) {
+    console.log("Votre score est de " + score + " sur " + nbMotsProposes)
 }
 
-function retournerMessageScore(score, nombreQuestions) {
-    let message = 'Votre score est de ' + score + ' sur ' + nombreQuestions
-    return message
+function choisirPhrasesOuMots() {
+    // Tant que l'utilisateur n'a pas saisi "mots" ou "phrases", on lui redemande de saisir un choix
+while (choix !== "mots" && choix !== "phrases") {
+    choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
+ } return choix
 }
-
-let nouveauMessage = retournerMessageScore(5, 10)
-console.log(nouveauMessage)
